@@ -1,0 +1,6 @@
+tea
+tree
+apple
+orange
+cake
+food

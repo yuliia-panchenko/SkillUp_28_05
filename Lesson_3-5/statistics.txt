@@ -1,0 +1,6 @@
+Number of symbols: 56
+Number of lines: 4
+Number of vowels: 15
+Number of consonants: 23
+Number of numbers: 5
+Length of the longest line: 17

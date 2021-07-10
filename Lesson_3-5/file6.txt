@@ -1,0 +1,9 @@
+cat
+dog
+lemon
+eye
+pencil
+lemon
+cat
+umbrella
+lemongrass
