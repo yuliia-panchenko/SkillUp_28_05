@@ -1,16 +1,17 @@
-# This is a sample Python script.
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# import sys
+# a = sys.argv
 
+# import module_1
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# print(f"Hello, I am a module {__name__}")
+# # print(f"Hello, I am a module {module_1.__name__}")
+# print(f"module 1: {module_1.vaiable_1}")
 
+from calculations import prime_numbers
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+input_list = [1,2,3,4,5,6,7,8,9,10]
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+prime_numbers = prime_numbers.get_prime_numbers_count(input_list)
+
+print(prime_numbers)
