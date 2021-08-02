@@ -24,11 +24,11 @@ class Stack:
     def push(self, value):
         try:
             new_value = int(value)
-            self.__stack_list.append(new_value)
             if new_value <= 50:
                 sleep(1)
             else:
                 sleep(2)
+            self.__stack_list.append(new_value)
         except ValueError:
             print('Use only integers')
 
@@ -59,22 +59,29 @@ class AsyncStack(Stack):
 
 
 def generator(n):
+    """Generator of random numbers in range n"""
     for i in range(n):
         yield randint(1, 100)
 
 
-stack_1 = Stack()
+def main():
+    number_stacks = 2
+    number_element = 10
+    stack_sync = [Stack() for i in range(number_stacks)]
+    for stack in stack_sync:
+        [stack.push(k) for k in generator(number_element) for stack in stack_sync]
+        print('Synchronous stack:', stack)
+        print('=' * 25)
 
-for k in generator(10):
-    stack_1.push(k)
+    stack_async = [AsyncStack() for i in range(number_stacks)]
+    tasks = [as_stack.push(k) for k in generator(number_element) for as_stack in stack_async]
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(asyncio.gather(*tasks))
+    loop.close()
+    for as_stack in stack_async:
+        print('Asynchronous stack:', as_stack)
+        print('=' * 25)
 
-print('Synchronous stack:', stack_1)
-print('='*25)
 
-stack_2 = AsyncStack()
-tasks = [stack_2.push(k) for k in generator(10)]
-loop = asyncio.get_event_loop()
-loop.run_until_complete(asyncio.gather(*tasks))
-loop.close()
-
-print('Asynchronous stack:', stack_2)
+if __name__ == '__main__':
+    main()
